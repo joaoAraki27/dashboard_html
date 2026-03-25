@@ -37,7 +37,7 @@ nav a {
     display: block;
     padding: 10px;
     border-radius: 4px;
-    transition: backgorund 0.3s;
+    transition: background 0.3s;
 }
 
 nav a:hover{
@@ -153,9 +153,55 @@ tbody tr:hover {
 
 /* Inserção de estilo botão */
 .btn-icon {
-    background-color: none;
+    background: none;
     border: none;
     color: #004a8d;
     cursor: pointer;
     font-size: 16px;
 }
+
+/* Formatação do formulário */
+.card-form {
+    background: white;
+    max-width: 700px; /* Evita que o form fique muito largo em telas grandes */
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.form-header {margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px;}
+
+.form-group {
+    display: flex;
+    flex-direction: column;  /* Label em cima, imput embaixo */
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form-row{ display: flex; gap: 20px;} /* coloca dois campos lado a lado */
+.flex-1 { flex: 1;}
+
+label {font-weight: bold; color:#2c3e50; font-size: 14px;}
+
+input, select {
+    padding: 12px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+input:focus { border-color:#004a8d; outline: none; box-shadow: 0 0 0 3px rgba(0, 74, 141,0.1);}
+
+.btn-save{
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+/* botao usuarios */

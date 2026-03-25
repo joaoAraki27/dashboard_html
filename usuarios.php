@@ -7,7 +7,22 @@
      <link rel="stylesheet" href="dash.css">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+<style>
+    .btn-add{
+    background-color: #004a8d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+</style>
 <body>
+    <div class="dashboard-container">
+
+        <?php include 'menu.php'; ?>
+
     <main>
         <div class="header-content">
             <h2>Gestão de Usuários</h2>
@@ -45,10 +60,17 @@
         <td><button class="Btn-icon"><i class="fa-solid fa-pen"></i></button></td>
     </tr>
 </tbody>
+<tfoot>
+    <tr>
+        <td colspan="6" align ="right" ><button class="btn-add"<i class="fa-solid fa-plus"></i> Adicionar Usuário</button></td>
+    </tr>
+</tfoot>
 </table>
+</div>
 </div>
 </main>
 
+<?php include 'footer.php'; ?>
 
 </body>
 </html>
