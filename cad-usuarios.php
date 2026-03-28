@@ -47,7 +47,7 @@
                     </div>
                     <div class="form-actions">
                         <button type="submit" class="btn-save"> Finalizar Cadastro </button>
-                        <a href="index.php" class="btn-cancel"> Cancelar </a>
+                        <a href="usuarios.php" class="btn-cancel"> Cancelar </a>
                     </div>
                 </form>
             </section>

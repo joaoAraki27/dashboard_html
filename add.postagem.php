@@ -15,16 +15,23 @@
     background: #f5f7fa;
     font-size: 1.5em;
 }
+h2{
+    margin-bottom: 0px;
+}
+p{
+    margin-top: 0px;
+    font-size: 0.6em;
+    color: #424242;
+}
 
   .login-container {
     background: white;
     padding: 40px;
     border-radius: 12px;
     margin: auto;
-    width: 320px;
+    width: 500px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
-
 
 
 form {
@@ -50,44 +57,40 @@ input {
 }
 
 .btn-secondary {
-    background: none;
-    border: none;
-    color: #007bff;
+    display: block;         
+    text-align: center;     
+    text-decoration: none;   
+    background: #007bff;
+    color: white;
     cursor: pointer;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 0.6em;  
 }
 
-.error-alert{
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 10px;
-  border-radius: 4px;
-  font-size: 13px;
-  margin-bottom: 15px;
-  border: 1px solid #f5c6cb;
+
+
+textarea{
+    height: 250px;
+    margin-bottom: 10px;
 }
+
 </style>
 <body>
 
     <main class="login-container">
       <form action="autentificacao.php" method="POST">
-        <h2 class="login-title">Se cadastre em nossa plataforma</h2>
+        <h2 class="login-title">Cadastro de postagem</h2>
+        <p>Preencha os dados para adicionar uma postagem</p>
+        
 
-        <input type="email" placeholder="Your email" name="email" />
-        <input type="password" placeholder="Your password" name="senha" />
+        <input type="email" placeholder="Digite o titulo da postagem" name="email" />
+        <textarea name="cont" id="icont" placeholder="Sobre o que fala sua postagem??"></textarea>
 
-        <button class="btn-primary">Log In</button>
 
-        <p class="register-text">
-          Não está registrado?
-          <button class="btn-secondary" type="button">
-            Criar conta
-          </button>
-        </p>
-
-        <?php if(isset($_GET["erro"])): ?>
-          <p class = "error-alert">Usuário ou senha incorretos!</p> 
-        <?php endif; ?>
-
+        <button class="btn-primary">Salvar</button>
+        <a href="postagem.php" class="btn-secondary">Voltar</a>
     </form>
     </main>
 

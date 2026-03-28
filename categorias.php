@@ -25,8 +25,7 @@
 
     <main>
         <div class="header-content">
-            <h2>Gestão de Usuários</h2>
-            <p>Visualize e gerencie as permissões dos usuários do sistema .</p>
+            <h2>Gestão de Categorias</h2>
         </div>
 
         <div class="table-responsive">
@@ -62,7 +61,7 @@
 </tbody>
 <tfoot>
     <tr>
-        <td colspan="6" align ="right" > <a href="cad-usuarios.php" <button class="btn-add"<i class="fa-solid fa-plus"></i> Adicionar Usuário</button></a></td>
+        <td colspan="6" align ="right" > <a href="add.categoria.php" <button class="btn-add"<i class="fa-solid fa-plus"></i> Adicionar Categoria</button></a></td>
     </tr>
 </tfoot>
 </table>
