@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="form-actions">
-                        <button type="submit" class="btn-save"> Finalizar Cadastro </button>
+                        <button type="submit" id="btn-salvar" class="btn-save"> Finalizar Cadastro </button>
                         <a href="usuarios.php" class="btn-cancel"> Cancelar </a>
                     </div>
                 </form>
@@ -55,4 +55,39 @@
     </div>
      <?php include 'footer.php'; ?>
 </body>
+
+<script>
+    const btnSalvar = document.getElementById("btn-salvar");
+
+    btnSalvar.addEventListener('click', function () {
+        
+    console.log("teste")
+    
+    
+    const inputNome = document.getElementById('nome').value;
+    const inputEmail = document.getElementById('email').value;
+    const inputSenha = document.getElementById('senha').value;
+    const inputNivel = document.getElementById('nivel').value;
+
+    if(inputNome && inputEmail && inputSenha !== "") {
+    const novoUsuario = {nome: inputNome, email: inputEmail, senha:inputSenha, nivel:inputNivel};
+    let lista = JSON.parse(localStorage.getItem("bancoUsuarios")) || [];
+
+    lista.push(novoUsuario);
+
+    localStorage.setItem('bancoUsuarios', JSON.stringify(lista));
+
+    alert("Usuario salvo com sucesso!");
+    }
+    else {
+    alert("Há espaços em branco para ser preenchido!"); 
+    }
+    
+    document.getElementById('nome').value = '';
+    document.getElementById('email').value = '';
+    });
+</script>
+
 </html>
+
+

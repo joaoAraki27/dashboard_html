@@ -77,20 +77,48 @@ input {
 <body>
 
     <main class="login-container">
-      <form action="autentificacao.php" method="POST">
+      <form action="#" method="POST">
         <h2 class="login-title">Cadastro de categoria</h2>
         <p>Preencha os dados para adicionar uma categoria</p>
 
-        <input type="email" placeholder="Digite o nome da categoria" name="email" />
+        <input type="text" id="nome" placeholder="Digite o nome da categoria" />
 
 
-        <button class="btn-primary">Salvar</button>
+        <button class="btn-primary" id="btn-salvar">Salvar</button>
         <a href="categorias.php" class="btn-secondary">Voltar</a>
     </form>
     </main>
 
 
 </body>
+
+<script>
+    const btnSalvar = document.getElementById("btn-salvar");
+
+    btnSalvar.addEventListener('click', function () {
+        
+    console.log("teste")
+    
+    const inputNome = document.getElementById('nome').value;
+
+    if(inputNome !== "") {
+    const novaCategoria = {nome: inputNome};
+    let lista = JSON.parse(localStorage.getItem("bancoCategorias")) || [];
+
+    lista.push(novaCategoria);
+
+    localStorage.setItem('bancoCategorias', JSON.stringify(lista));
+
+    alert("Categoria salva com sucesso!");
+    }
+    else {
+    alert("Há espaços em branco para ser preenchido!"); 
+    }
+    
+    document.getElementById('nome').value = '';
+    document.getElementById('email').value = '';
+    });
+</script>
 </html>
 
 

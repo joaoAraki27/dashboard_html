@@ -42,7 +42,7 @@
                     </tr>
                 </thead>
         
-    <tbody>
+<!-- <tbody>
     <tr>
         <td>01</td>
         <td>Eric Freitas</td>
@@ -59,7 +59,10 @@
         <td><span class="badge ativo">Ativo</span></td>
         <td><button class="Btn-icon"><i class="fa-solid fa-pen"></i></button></td>
     </tr>
-</tbody>
+</tbody> -->
+
+<tbody id="lista-tela" ></tbody>
+
 <tfoot>
     <tr>
         <td colspan="6" align ="right" > <a href="cad-usuarios.php" <button class="btn-add"<i class="fa-solid fa-plus"></i> Adicionar Usuário</button></a></td>
@@ -73,4 +76,64 @@
 <?php include 'footer.php'; ?>
 
 </body>
+
+<script>
+    function carregarDados(){
+        const ul = document.getElementById('lista-tela');
+
+        let lista = JSON.parse(localStorage.getItem('bancoUsuarios')) || [];
+
+        ul.innerHTML = '';
+
+        lista.forEach(function(usuario, index) {
+            ul.innerHTML +=
+            `
+            <tr>
+                <td>${index}</td>
+                <td>${usuario.nome}</td>
+                <td>${usuario.email}</td>
+                <td>${usuario.nivel == 1 ? "Usuário" : "administrador"}</td>
+                <td><span class="badge ativo">Ativo</span></td>
+                <td>
+                <button class="Btn-icon"><i class="fa-solid fa-pen" onclick="editar(${index})" style="color: blue; margin-left: 10px;"></i></button>
+                <button class="Btn-icon"><i class="fa-solid fa-trash-can" onclick="deletar(${index})" style="color: red"; margin-left: 10px;"></i></button>
+                </td>
+            </tr>
+            `
+        });
+    }
+
+    function deletar(index) {
+     if(confirm("Tem certeza que deseja apagar?")) {
+        let lista = JSON.parse(localStorage.getItem('bancoUsuarios'));
+
+        lista.splice(index, 1);
+
+        localStorage.setItem('bancoUsuarios', JSON.stringify(lista));
+
+        carregarDados();
+    }
+    }
+
+    function editar(index) {
+
+        let lista = JSON.parse(localStorage.getItem('bancoUsuarios'));
+
+
+        let novoNome = prompt("Qual o novo nome do usuário");
+        let novoEmail =  prompt("Qual o novo nome do usuário");
+
+        lista[index].nome = novoNome
+        lista[index].email = novoEmail
+
+         localStorage.setItem('bancoUsuarios', JSON.stringify(lista));
+
+    
+        carregarDados();
+
+    }
+
+    carregarDados();
+</script>
+
 </html>

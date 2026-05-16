@@ -80,22 +80,53 @@ textarea{
 <body>
 
     <main class="login-container">
-      <form action="autentificacao.php" method="POST">
+      <form action="#" method="POST">
         <h2 class="login-title">Cadastro de postagem</h2>
         <p>Preencha os dados para adicionar uma postagem</p>
         
 
-        <input type="email" placeholder="Digite o titulo da postagem" name="email" />
-        <textarea name="cont" id="icont" placeholder="Sobre o que fala sua postagem??"></textarea>
+        <input type="text" id="nome" placeholder="Digite o titulo da postagem" name="email" />
+        <textarea type="text" name="cont" id="postagem" placeholder="Sobre o que fala sua postagem??"></textarea>
 
 
-        <button class="btn-primary">Salvar</button>
+        <button class="btn-primary" id="btn-salvar" >Salvar</button>
         <a href="postagem.php" class="btn-secondary">Voltar</a>
     </form>
     </main>
 
 
 </body>
+
+<script>
+    const btnSalvar = document.getElementById("btn-salvar");
+
+    btnSalvar.addEventListener('click', function () {
+        
+    console.log("teste")
+    
+    
+    const inputNome = document.getElementById('nome').value;
+    const inputPostagem = document.getElementById('postagem').value;
+
+    if(inputNome && inputPostagem !== "") {
+    const novoUsuario = {nome: inputNome, postagem: inputPostagem};
+    let lista = JSON.parse(localStorage.getItem("bancoPostagem")) || [];
+
+    lista.push(novoUsuario);
+
+    localStorage.setItem('bancoPostagem', JSON.stringify(lista));
+
+    alert("Postagem salva com sucesso!");
+    }
+    else {
+    alert("Há espaços em branco para ser preenchido!"); 
+    }
+    
+    document.getElementById('nome').value = '';
+    document.getElementById('postagem').value = '';
+    });
+</script>
+
 </html>
 
 

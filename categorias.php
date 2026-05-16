@@ -34,14 +34,11 @@
                     <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>E-mail</th>
-                    <th>Acesso</th>
-                    <th>Status</th>
-                    <th>Ações</th>
+                    <th></th>
                     </tr>
                 </thead>
         
-    <tbody>
+    <!-- <tbody>
     <tr>
         <td>01</td>
         <td>Eric Freitas</td>
@@ -58,7 +55,10 @@
         <td><span class="badge ativo">Ativo</span></td>
         <td><button class="Btn-icon"><i class="fa-solid fa-pen"></i></button></td>
     </tr>
-</tbody>
+
+</tbody> -->
+<tbody id="lista-categorias" ></tbody>
+
 <tfoot>
     <tr>
         <td colspan="6" align ="right" > <a href="add.categoria.php" <button class="btn-add"<i class="fa-solid fa-plus"></i> Adicionar Categoria</button></a></td>
@@ -72,4 +72,57 @@
 <?php include 'footer.php'; ?>
 
 </body>
+<script>
+    function carregarDados(){
+        const ul = document.getElementById('lista-categorias');
+
+        let lista = JSON.parse(localStorage.getItem('bancoCategorias')) || [];
+
+        ul.innerHTML = '';
+
+         lista.forEach(function(usuario, index) {
+            ul.innerHTML +=
+            `
+            <tr>
+                <td>${index}</td>
+                <td>${usuario.nome}</td>
+                <td>
+                <button class="Btn-icon"><i class="fa-solid fa-pen" onclick="editar(${index})" style="color: blue; margin-left: 10px;"></i></button>
+                <button class="Btn-icon"><i class="fa-solid fa-trash-can" onclick="deletar(${index})" style="color: red"; margin-left: 10px;"></i></button>
+                </td>
+            </tr>
+            `
+        });
+    }
+
+    function deletar(index) {
+     if(confirm("Tem certeza que deseja apagar?")) {
+        let lista = JSON.parse(localStorage.getItem('bancoCategorias'));
+
+        lista.splice(index, 1);
+
+        localStorage.setItem('bancoCategorias', JSON.stringify(lista));
+
+        carregarDados();
+    }
+    }
+
+    function editar(index) {
+
+        let lista = JSON.parse(localStorage.getItem('bancoCategorias'));
+
+
+        let novoNome = prompt("Qual o novo nome da categoria?");;
+
+        lista[index].nome = novoNome
+
+         localStorage.setItem('bancoCategorias', JSON.stringify(lista));
+
+    
+        carregarDados();
+
+    }
+
+    carregarDados();
+</script>
 </html>
